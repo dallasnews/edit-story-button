@@ -29,5 +29,5 @@
   if (shouldOpenSerif) return open(`${serif}?_id=${serifId}`)
 
   // No matches found
-  cancel()
+  !(arcId || serifId) && cancel()
 })()
