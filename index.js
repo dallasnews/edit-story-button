@@ -6,7 +6,7 @@
   const approve = () => confirm('Unknown site - try to open editor anyway?')
 
   // Host verification
-  const hostRegex = /(aldiadallas.com|dallasnews.com)$/
+  const hostRegex = /(aldiadallas.com|guidelive.com|dallasnews.com)$/
   const knownHost = location.hostname.match(hostRegex)
 
   // Arc/Ellipsis Handler
@@ -20,8 +20,8 @@
   // Serif/Storyteller Handler
   const serif = 'http://serif.dallasnews.com/chronicle/storyteller/compose.html'
   const metaNodes = document.querySelectorAll('[type$="ld+json"]')
-  const articleNodeCheck = node => node.innerText.includes('NewsArticle')
-  const article = Array.from(metaNodes).find(articleNodeCheck)
+  const isArticleNode = node => node.innerText.includes('NewsArticle')
+  const article = Array.from(metaNodes).find(isArticleNode)
   const metaId = article && JSON.parse(article.innerText).post_id
   const { articleId: serifId = metaId } = window.DFP_adTargets || {}
 
