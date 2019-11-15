@@ -6,28 +6,30 @@
   const approve = () => confirm('Unknown site - try to open editor anyway?')
 
   // Host verification
-  const hostRegex = /(aldiadallas.com|guidelive.com|dallasnews.com)$/
-  const knownHost = location.hostname.match(hostRegex)
+  const arcStaging = 'https://sandbox.dmn.arcpublishing.com/composer/#!'
+  const arcDefault = 'https://dmn.arcpublishing.com/composer/#!'
 
-  // Arc/Ellipsis Handler
-  const ellipsis = 'https://dmn.arcpublishing.com/ellipsis'
+  const hosts = [
+    {
+      domain: /staging.dallasnews.com$/, // hostname regex
+      editor: arcStaging, // editor base URL
+    },
+    {
+      domain: /dallasnews.com$/,
+      editor: arcDefault,
+    },
+  ]
+
+  const knownHost = hosts.find(({ domain }) => location.hostname.match(domain))
+  const editorUrl = knownHost ? knownHost.editor : arcDefault
+
+  // Arc/Composer Handler
   const { globalContent: content = {} } = window.Fusion || {}
   const arcId = content.type === 'story' && content._id
 
   const shouldOpenArc = arcId && (knownHost || approve())
-  if (shouldOpenArc) return open(`${ellipsis}/#!/edit/${arcId}/`)
-
-  // Serif/Storyteller Handler
-  const serif = 'http://serif.dallasnews.com/chronicle/storyteller/compose.html'
-  const metaNodes = document.querySelectorAll('[type$="ld+json"]')
-  const isArticleNode = node => node.innerText.includes('NewsArticle')
-  const article = Array.from(metaNodes).find(isArticleNode)
-  const metaId = article && JSON.parse(article.innerText).post_id
-  const { articleId: serifId = metaId } = window.DFP_adTargets || {}
-
-  const shouldOpenSerif = serifId && (knownHost || approve())
-  if (shouldOpenSerif) return open(`${serif}?_id=${serifId}`)
+  if (shouldOpenArc) return open(`${editorUrl}/edit/${arcId}/`)
 
   // No matches found
-  !(arcId || serifId) && cancel()
+  !arcId && cancel()
 })()
