@@ -21,3 +21,7 @@ javascript:(()=%3E%7Bconst%20o=%22https://dmn.arcpublishing.com/composer/#!%22,n
 <a onClick="event.preventDefault(); navigator.clipboard.writeText(document.querySelector('code').innerText); event.target.innerText='CODE COPIED!'; setTimeout(() => event.target.innerText='COPY CODE TO CLIPBOARD', 2000)" href="#">COPY CODE TO CLIPBOARD</a>
 
 ❸ _(There is no step 3)_
+
+---
+
+[View bookmarklet source code on GitHub](https://github.com/dallasnews/edit-story-button)
