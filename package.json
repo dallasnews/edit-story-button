@@ -17,6 +17,6 @@
   },
   "homepage": "https://dallasnews.github.io/edit-story-bookmarklet",
   "devDependencies": {
-    "terser": "^4.4.0"
+    "terser": "^4.8.0"
   }
 }
