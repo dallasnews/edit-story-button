@@ -7,16 +7,53 @@
 
   // Host verification
   const arcStaging = 'https://sandbox.dmn.arcpublishing.com/composer/#!'
-  const arcDefault = 'https://dmn.arcpublishing.com/composer/#!'
+  const arcDmnDev = 'https://dmndev.dmn.arcpublishing.com/composer/#!'
+  const arcProduction = 'https://dmn.arcpublishing.com/composer/#!'
 
   const hosts = [
+    // Local direct
     {
-      domain: /staging.dallasnews.com$/, // hostname regex
+      domain: /localhost(:\d+)?$/, // hostname regex
       editor: arcStaging, // editor base URL
     },
+    // Local with TLS Proxy
     {
-      domain: /dallasnews.com$/,
-      editor: arcDefault,
+      domain: /local.*dallasnews.com(:\d+)?$/,
+      editor: arcStaging,
+    },
+
+    // Arc DMNdev
+    {
+      domain: /dmndev.dmn.arcpublishing.com$/,
+      editor: arcDmnDev,
+    },
+
+    // Arc Dev
+    {
+      domain: /dev.dmn.arcpublishing.com$/,
+      editor: arcStaging,
+    },
+
+    // Arc Sandbox
+    {
+      domain: /sandbox.dmn.arcpublishing.com$/,
+      editor: arcStaging,
+    },
+    // Arc Sandbox with CNAME
+    {
+      domain: /staging.dallasnews.com$/,
+      editor: arcStaging,
+    },
+
+    // Arc Production
+    {
+      domain: /^dmn.arcpublishing.com$/,
+      editor: arcProduction,
+    },
+    // Arc Production with CNAME
+    {
+      domain: /^(www\.)?dallasnews.com$/,
+      editor: arcProduction,
     },
   ]
 
