@@ -58,7 +58,7 @@
   ]
 
   const knownHost = hosts.find(({ domain }) => location.hostname.match(domain))
-  const editorUrl = knownHost ? knownHost.editor : arcDefault
+  const editorUrl = knownHost ? knownHost.editor : arcProduction
 
   // Arc/Composer Handler
   const { globalContent: content = {} } = window.Fusion || {}
