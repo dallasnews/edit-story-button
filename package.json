@@ -10,8 +10,11 @@
     "type": "git",
     "url": "git+https://github.com/dallasnews/edit-story-bookmarklet.git"
   },
-  "author": "Claire Campbell <claire.campbell@belointel.com>",
-  "license": "ISC",
+  "author": {
+    "name": "Claire Campbell",
+    "email": "claire.campbell@dallasnews.com"
+  },
+  "license": "UNLICENSED",
   "bugs": {
     "url": "https://github.com/dallasnews/edit-story-bookmarklet/issues"
   },
