@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "node build"
+    "build": "microbundle index.ts && node build"
   },
+  "exports": "./dist/bookmarklet.modern.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dallasnews/edit-story-bookmarklet.git"
@@ -20,6 +21,7 @@
   },
   "homepage": "https://dallasnews.github.io/edit-story-bookmarklet",
   "devDependencies": {
+    "microbundle": "^0.13.0",
     "terser": "^5.7.0",
     "typescript": "^4.2.4"
   }

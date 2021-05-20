@@ -1,3 +1,13 @@
+interface GlobalContent {
+  type: string
+  _id: string
+}
+
+interface FusionGlobal {
+  globalContent: GlobalContent
+}
+
+declare const Fusion: FusionGlobal
 ;(() => {
   // Edit Story Bookmarklet - all logic must be in this IIFE
 
@@ -61,7 +71,7 @@
   const editorUrl = knownHost ? knownHost.editor : arcProduction
 
   // Arc/Composer Handler
-  const { globalContent: content = {} } = window.Fusion || {}
+  const { globalContent: content } = Fusion || {}
   const arcId = content.type === 'story' && content._id
 
   const shouldOpenArc = arcId && (knownHost || approve())
