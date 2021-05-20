@@ -1,7 +1,7 @@
 {
   "name": "edit-story-bookmarklet",
   "version": "1.2.1",
-  "description": "",
+  "description": "Edit Story Bookmarklet for Arc-powered sites",
   "main": "index.js",
   "scripts": {
     "build": "microbundle -o dist/bookmarklet.js && node build"
