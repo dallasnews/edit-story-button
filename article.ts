@@ -1,11 +1,4 @@
-interface GlobalContent {
-  type: string
-  _id: string
-}
-
-interface FusionGlobal {
-  globalContent: GlobalContent
-}
+import './fusion'
 
 interface AnalyticsConfigVars {
   articleId: string
@@ -14,8 +7,6 @@ interface AnalyticsConfigVars {
 interface AnalyticsConfig {
   vars: AnalyticsConfigVars
 }
-
-declare const Fusion: FusionGlobal
 
 const findAMPAnaylticsArticleId = (): string | null => {
   const configSelector = 'amp-analytics > script[type$=json]'
