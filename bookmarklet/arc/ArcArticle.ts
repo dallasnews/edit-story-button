@@ -1,5 +1,6 @@
 import { escapeRegexChars, firstNonEmptyString, parseJSON } from '../utils'
 import ArcEnvironment, { arcBaseDomain } from './ArcEnvironment'
+import AMPAnalyticsConfig from '../amp/AMPAnalyticsConfig'
 import './ArcFusion'
 import config from '../config'
 
@@ -25,7 +26,7 @@ class ArcArticle {
     const articleId = firstNonEmptyString(
       configElements.map(
         ({ innerHTML }) =>
-          (parseJSON(innerHTML) as AnalyticsConfig)?.vars?.articleId || null
+          (parseJSON(innerHTML) as AMPAnalyticsConfig)?.vars?.articleId || null
       )
     )
 
@@ -68,13 +69,6 @@ class ArcArticle {
     id: string | null,
     env: ArcEnvironment | null
   ): string | null => (id && env ? `${env.composerBaseUrl}/${id}/` : null)
-}
-
-interface AnalyticsConfig {
-  vars: AnalyticsConfigVars
-}
-interface AnalyticsConfigVars {
-  articleId: string
 }
 
 export default ArcArticle
