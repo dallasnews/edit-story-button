@@ -2,6 +2,8 @@
 
 This is a bookmarklet that you can add to your browser for convenient access to the Arc editor when you have the live article open.
 
+Currently supports only **Fusion-powered sites**.
+
 ## Installation
 
 This repository is configured for The Dallas Morning News.
